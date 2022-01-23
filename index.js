@@ -7,6 +7,8 @@ const { tokenizeUwuSource } = require('./lib/utils');
 
 // Transpilers
 const transpileToBrainfuck = require('./lib/transpilers/Brainfuck');
+const transpileToC = require('./lib/transpilers/C');
+const transpileToCpp = require('./lib/transpilers/CPP');
 const transpileToJavaScript = require('./lib/transpilers/JavaScript');
 const transpileToPython = require('./lib/transpilers/Python');
 
@@ -15,6 +17,8 @@ module.exports = {
   WrongInputError,
   tokenizeUwuSource,
   transpileToBrainfuck,
+  transpileToC,
+  transpileToCpp,
   transpileToJavaScript,
   transpileToPython,
 };
