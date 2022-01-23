@@ -6,11 +6,15 @@ const WrongInputError = require('./lib/errors/wrongInput');
 const { tokenizeUwuSource } = require('./lib/utils');
 
 // Transpilers
+const transpileToBrainfuck = require('./lib/transpilers/Brainfuck');
 const transpileToJavaScript = require('./lib/transpilers/JavaScript');
+const transpileToPython = require('./lib/transpilers/Python');
 
 module.exports = {
   LoopBoundaryMismatchError,
   WrongInputError,
   tokenizeUwuSource,
+  transpileToBrainfuck,
   transpileToJavaScript,
+  transpileToPython,
 };
