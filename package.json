@@ -11,6 +11,7 @@
     "lib/**/*.js",
     "lib/**/*.d.ts",
     "dist/uwu-toolkit.js",
+    "examples/*",
     "docs/API.md",
     "README.md"
   ],

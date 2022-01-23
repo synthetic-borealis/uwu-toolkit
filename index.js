@@ -4,6 +4,7 @@ const WrongInputError = require('./lib/errors/wrongInput');
 
 // Utilities
 const { tokenizeUwuSource } = require('./lib/utils');
+const { isValidProgram } = require('./lib/validation');
 
 // Transpilers
 const transpileToBrainfuck = require('./lib/transpilers/Brainfuck');
@@ -16,6 +17,7 @@ module.exports = {
   LoopBoundaryMismatchError,
   WrongInputError,
   tokenizeUwuSource,
+  isValidProgram,
   transpileToBrainfuck,
   transpileToC,
   transpileToCpp,
