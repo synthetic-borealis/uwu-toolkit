@@ -16,11 +16,11 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/synthetic-borealis/uwu.js.git"
+    "url": "git+https://github.com/synthetic-borealis/uwu-toolkit.js.git"
   },
-  "homepage": "https://github.com/synthetic-borealis/uwu.js#readme",
+  "homepage": "https://github.com/synthetic-borealis/uwu-toolkit.js#readme",
   "bugs": {
-    "url": "https://github.com/synthetic-borealis/uwu.js/issues"
+    "url": "https://github.com/synthetic-borealis/uwu-toolkit.js/issues"
   },
   "keywords": [
     "uwu",
