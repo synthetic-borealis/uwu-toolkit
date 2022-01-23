@@ -9,7 +9,7 @@ UwU is an esoteric programming language created by [Kira Rose](https://github.co
 ## Supported Output Languages
 <table>
   <tr>
-    <td colspan="1" style="opacity: 0;">-</td>
+    <td colspan="1" style="opacity: 0;"></td>
     <th colspan="8">Supported Commands</th>
   </tr>
   <tr>
