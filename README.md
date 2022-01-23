@@ -1,4 +1,7 @@
 # UwU Toolkit
+[![npm version](https://badge.fury.io/js/uwu-toolkit.svg)](https://badge.fury.io/js/uwu-toolkit)
+![Tests](https://github.com/synthetic-borealis/uwu-toolkit.js/actions/workflows/test.yml/badge.svg)
+[![GitHub license](https://img.shields.io/github/license/synthetic-borealis/uwu-toolkit.js)](https://github.com/synthetic-borealis/uwu-toolkit.js/blob/main/LICENSE)
 
 An UwU transpilation library for Node.js.
 
