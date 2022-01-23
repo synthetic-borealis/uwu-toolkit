@@ -1,6 +1,12 @@
 const uwu = require('../index');
 const { PythonShell } = require('python-shell');
 const should = require('should');
+const cppUtils = require('cpp-utils');
+const fs = require('fs/promises');
+const process = require('process');
+const util = require('util');
+const exec = util.promisify(require('child_process').exec);
+
 const { helloUwu, invalidUwu } = require('../lib/constants');
 const expectedOutputString = 'Hewwo Wowwd!';
 
@@ -71,6 +77,88 @@ describe('Transpiler tests', () => {
           results.should.eql([expectedOutputString]);
           done();
         });
+      });
+    });
+  });
+
+  describe('C transpiler', () => {
+    let outputCode;
+
+    it('Does not throw error when input is a valid program', () => {
+      expect(() => {
+        outputCode = uwu.transpileToC(helloUwu);
+      }).not.toThrow();
+    });
+
+    describe('Generated C code', () => {
+      const exeExtension = process.platform === 'win32' ? '.exe' : '';
+      const executableFile = `test${exeExtension}`;
+      const sourceFile = 'test.c';
+
+      beforeAll(() => {
+        return fs.writeFile(sourceFile, outputCode);
+      });
+
+      it('Is valid', () => {
+        return expect(cppUtils.compileWithGcc(sourceFile, executableFile, true)).resolves.toBeDefined();
+      });
+
+      it('Has correct output', (done) => {
+        const commandToRun = process.platform === 'win32' ? executableFile : `./${executableFile}`;
+        exec(commandToRun)
+          .then(({ stdout, stderr }) => {
+            if (stdout.trim() === expectedOutputString) {
+              done();
+            }
+          })
+          .catch((err) => {
+            done(err);
+          });
+      });
+
+      afterAll(() => {
+        return Promise.all([fs.unlink(sourceFile), fs.unlink(executableFile)]);
+      });
+    });
+  });
+
+  describe('C++ transpiler', () => {
+    let outputCode;
+
+    it('Does not throw error when input is a valid program', () => {
+      expect(() => {
+        outputCode = uwu.transpileToCpp(helloUwu);
+      }).not.toThrow();
+    });
+
+    describe('Generated C++ code', () => {
+      const exeExtension = process.platform === 'win32' ? '.exe' : '';
+      const executableFile = `test${exeExtension}`;
+      const sourceFile = 'test.cpp';
+
+      beforeAll(() => {
+        return fs.writeFile(sourceFile, outputCode);
+      });
+
+      it('Is valid', () => {
+        return expect(cppUtils.compileWithGPlus(sourceFile, executableFile, true)).resolves.toBeDefined();
+      });
+
+      it('Has correct output', (done) => {
+        const commandToRun = process.platform === 'win32' ? executableFile : `./${executableFile}`;
+        exec(commandToRun)
+          .then(({ stdout, stderr }) => {
+            if (stdout.trim() === expectedOutputString) {
+              done();
+            }
+          })
+          .catch((err) => {
+            done(err);
+          });
+      });
+
+      afterAll(() => {
+        return Promise.all([fs.unlink(sourceFile), fs.unlink(executableFile)]);
       });
     });
   });
