@@ -2,22 +2,38 @@
   "name": "uwu",
   "version": "0.1.0",
   "description": "An Uwu transpilation library",
+  "author": "Elhanan Flesch",
+  "license": "MIT",
   "main": "index.js",
-  "scripts": {
-    "test": "jest"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/synthetic-borealis/uwu.js.git"
+  },
+  "homepage": "https://github.com/synthetic-borealis/uwu.js#readme",
+  "bugs": {
+    "url": "https://github.com/synthetic-borealis/uwu.js/issues"
   },
   "keywords": [
     "uwu",
     "brainfuck"
   ],
-  "author": "Elhanan Flesch",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/synthetic-borealis/uwu.js/issues"
+  "scripts": {
+    "lint": "eslint lib index.js",
+    "lint:log": "eslint lib index.js > lint.log",
+    "lint:fix": "eslint --fix lib index.js",
+    "test": "jest"
   },
-  "homepage": "https://github.com/synthetic-borealis/uwu.js#readme"
+  "devDependencies": {
+    "@babel/preset-env": "^7.16.11",
+    "babel-loader": "^8.2.3",
+    "cpp-utils": "^1.0.1",
+    "del-cli": "^4.0.1",
+    "eslint": "^8.7.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "jest": "^27.4.7",
+    "python-shell": "^3.0.1",
+    "rimraf": "^3.0.2",
+    "webpack": "^5.67.0"
+  }
 }
