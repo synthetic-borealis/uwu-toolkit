@@ -1,4 +1,4 @@
-const uwu = require('../index');
+const uwuTK = require('../index');
 const { PythonShell } = require('python-shell');
 const should = require('should');
 const cppUtils = require('cpp-utils');
@@ -17,19 +17,19 @@ describe('Transpiler tests', () => {
 
     it('Throws an error when input has incorrect type', () => {
       expect(() => {
-        uwu.transpileToJavaScript([2, 9, 4]);
+        uwuTK.transpileToJavaScript([2, 9, 4]);
       }).toThrow();
     });
 
     it('Throws an error when input is not a valid program', () => {
       expect(() => {
-        uwu.transpileToJavaScript(invalidUwu);
+        uwuTK.transpileToJavaScript(invalidUwu);
       }).toThrow();
     });
 
     it('Does not throw error when input is a valid program', () => {
       expect(() => {
-        outputCode = uwu.transpileToJavaScript(helloUwu);
+        outputCode = uwuTK.transpileToJavaScript(helloUwu);
       }).not.toThrow();
     });
 
@@ -55,7 +55,7 @@ describe('Transpiler tests', () => {
 
     it('Does not throw error when input is a valid program', () => {
       expect(() => {
-        outputCode = uwu.transpileToPython(helloUwu);
+        outputCode = uwuTK.transpileToPython(helloUwu);
       }).not.toThrow();
     });
 
@@ -86,7 +86,7 @@ describe('Transpiler tests', () => {
 
     it('Does not throw error when input is a valid program', () => {
       expect(() => {
-        outputCode = uwu.transpileToC(helloUwu);
+        outputCode = uwuTK.transpileToC(helloUwu);
       }).not.toThrow();
     });
 
@@ -127,7 +127,7 @@ describe('Transpiler tests', () => {
 
     it('Does not throw error when input is a valid program', () => {
       expect(() => {
-        outputCode = uwu.transpileToCpp(helloUwu);
+        outputCode = uwuTK.transpileToCpp(helloUwu);
       }).not.toThrow();
     });
 

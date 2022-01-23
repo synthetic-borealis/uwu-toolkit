@@ -1,4 +1,4 @@
-# UwU.js
+# UwU Toolkit
 
 An UwU transpilation library for Node.js.
 
@@ -23,7 +23,7 @@ Run `npm i uwu`
 - Transpilation to JavaScript generates a function that returns an object containing two members:
   1. `output` - The output of the program.
   2. `cells` - The array of cells that were used by the program.
-- See the documentation for more information.
+- See the [documentation](docs/API.md) for more information.
 
 ## Supported Output Languages
 
