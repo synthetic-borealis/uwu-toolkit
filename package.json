@@ -1,6 +1,6 @@
 {
   "name": "uwu-toolkit",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "An UwU transpilation library",
   "author": "Elhanan Flesch",
   "license": "MIT",
@@ -25,7 +25,9 @@
   },
   "keywords": [
     "uwu",
-    "brainfuck"
+    "brainfuck",
+    "esoteric-languages",
+    "transpilers"
   ],
   "scripts": {
     "lint": "eslint lib index.js",
