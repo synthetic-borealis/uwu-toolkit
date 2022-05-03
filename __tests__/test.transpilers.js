@@ -1,6 +1,4 @@
 const uwuTK = require('../index');
-const { PythonShell } = require('python-shell');
-const should = require('should');
 const cppUtils = require('cpp-utils');
 const fs = require('fs/promises');
 const process = require('process');
@@ -46,37 +44,6 @@ describe('Transpiler tests', () => {
       it('Returns cell array', () => {
         expect(Array.isArray(hewwoWowwd().cells) &&
           !hewwoWowwd().cells.some((value) => typeof value !== 'number')).toBeTruthy();
-      });
-    });
-  });
-
-  describe('Python transpiler', () => {
-    let outputCode;
-
-    it('Does not throw error when input is a valid program', () => {
-      expect(() => {
-        outputCode = uwuTK.transpileToPython(helloUwu);
-      }).not.toThrow();
-    });
-
-    it('Generates valid Python code', (done) => {
-      PythonShell.runString(outputCode, null, (err, results) => {
-        if (err) {
-          done(err);
-        }
-        done();
-      });
-    });
-
-    describe('Generated function', () => {
-      it('Returns a correct output string', (done) => {
-        PythonShell.runString(outputCode, null, (err, results) => {
-          if (err) {
-            done(err);
-          }
-          results.should.eql([expectedOutputString]);
-          done();
-        });
       });
     });
   });
