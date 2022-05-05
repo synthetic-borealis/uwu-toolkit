@@ -7,10 +7,11 @@ const { tokenizeUwuSource } = require('./lib/utils');
 const { isValidProgram } = require('./lib/validation');
 
 // Transpilers
+const transpileToJsWeb = require('./lib/transpilers/JavaScriptWeb');
+const transpileToJsCLI = require('./lib/transpilers/JavaScriptCLI');
 const transpileToBrainfuck = require('./lib/transpilers/Brainfuck');
 const transpileToC = require('./lib/transpilers/C');
 const transpileToCpp = require('./lib/transpilers/CPP');
-const transpileToJavaScript = require('./lib/transpilers/JavaScript');
 const transpileToPython = require('./lib/transpilers/Python');
 
 module.exports = {
@@ -21,6 +22,7 @@ module.exports = {
   transpileToBrainfuck,
   transpileToC,
   transpileToCpp,
-  transpileToJavaScript,
+  transpileToJsWeb,
+  transpileToJsCLI,
   transpileToPython,
 };
