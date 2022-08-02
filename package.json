@@ -45,8 +45,8 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.16.11",
-    "babel-loader": "^8.2.3",
+    "@babel/preset-env": "^7.18.10",
+    "babel-loader": "^8.2.5",
     "cpp-utils": "^1.0.1",
     "del-cli": "^4.0.1",
     "eslint": "^8.7.0",
@@ -57,6 +57,9 @@
     "python-shell": "^3.0.1",
     "rimraf": "^3.0.2",
     "should": "^13.2.3",
-    "webpack": "^5.67.0"
+    "webpack": "^5.74.0"
+  },
+  "resolutions": {
+    "terser": "^5.14.2"
   }
 }

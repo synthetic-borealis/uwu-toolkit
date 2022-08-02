@@ -19,10 +19,13 @@
 <dt><a href="#transpileToCpp">transpileToCpp(source, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
 <dd><p>Converts UwU source code to a C++ program.</p>
 </dd>
-<dt><a href="#transpileToJavaScript">transpileToJavaScript(source, funcName, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts UwU source code to a JavaScript function.</p>
+<dt><a href="#transpileToJsCLI">transpileToJsCLI(source, useDynamicMemory, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
+<dd><p>Converts an UwU program to JavaScript (CLI).</p>
 </dd>
-<dt><a href="#transpileToPython">transpileToPython(source)</a> ⇒ <code>string</code></dt>
+<dt><a href="#transpileToJsWeb">transpileToJsWeb(source, funcName, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
+<dd><p>Converts UwU source code to JavaScript (Web).</p>
+</dd>
+<dt><a href="#transpileToPython">transpileToPython(source, useDynamicMemory)</a> ⇒ <code>string</code></dt>
 <dd><p>Converts UwU source code to a Python script.</p>
 </dd>
 <dt><a href="#tokenizeUwuSource">tokenizeUwuSource(source)</a> ⇒ <code>Array.&lt;string&gt;</code></dt>
@@ -82,7 +85,7 @@ Converts UwU source code to a C program.
 **Returns**: <code>string</code> - Generated C code.  
 **Throws**:
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string or an array of strings.
+- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
 - [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
 
 
@@ -101,7 +104,7 @@ Converts UwU source code to a C++ program.
 **Returns**: <code>string</code> - Generated C++ code.  
 **Throws**:
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string or an array of strings.
+- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
 - [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
 
 
@@ -111,42 +114,63 @@ Converts UwU source code to a C++ program.
 | indentSize | <code>number</code> | <code>1</code> | Indentation size (default = 1). |
 | indentChar | <code>string</code> | <code>&quot;\t&quot;</code> | Indentation character (default is tab). |
 
-<a name="transpileToJavaScript"></a>
+<a name="transpileToJsCLI"></a>
 
-## transpileToJavaScript(source, funcName, indentSize, indentChar) ⇒ <code>string</code>
-Converts UwU source code to a JavaScript function.
+## transpileToJsCLI(source, useDynamicMemory, indentSize, indentChar) ⇒ <code>string</code>
+Converts an UwU program to JavaScript (CLI).
+
+**Kind**: global function  
+**Returns**: <code>string</code> - Generated JavaScript code.  
+**Throws**:
+
+- <code>WrongInputTypeError</code> Input must be a string.
+- <code>BracketMismatchError</code> Loop starts must have matching loop ends and vice versa.
+
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| source | <code>string</code> |  | Brainfuck source to convert. |
+| useDynamicMemory | <code>boolean</code> | <code>true</code> | Enable dynamic memory array. |
+| indentSize | <code>number</code> | <code>2</code> | Indentation size. |
+| indentChar | <code>string</code> | <code>&quot; &quot;</code> | Indentation character. |
+
+<a name="transpileToJsWeb"></a>
+
+## transpileToJsWeb(source, funcName, indentSize, indentChar) ⇒ <code>string</code>
+Converts UwU source code to JavaScript (Web).
 
 **Kind**: global function  
 **Returns**: <code>string</code> - Generated JavaScript function source.  
 **Throws**:
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string or an array of strings.
+- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
 - [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
 
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | source | <code>string</code> |  | UwU source code to convert. |
-| funcName | <code>string</code> | <code>&quot;run&quot;</code> | Output function name (default = 'run'). |
+| funcName | <code>string</code> | <code>&quot;main&quot;</code> | Output function name (default = 'run'). |
 | indentSize | <code>number</code> | <code>2</code> | Indentation size (default = 4). |
 | indentChar | <code>string</code> | <code>&quot; &quot;</code> | Indentation character (default is space). |
 
 <a name="transpileToPython"></a>
 
-## transpileToPython(source) ⇒ <code>string</code>
+## transpileToPython(source, useDynamicMemory) ⇒ <code>string</code>
 Converts UwU source code to a Python script.
 
 **Kind**: global function  
 **Returns**: <code>string</code> - Generated Python code.  
 **Throws**:
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string or an array of strings.
+- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
 - [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
 
 
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>string</code> | UwU source code to convert. |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| source | <code>string</code> |  | UwU source code to convert. |
+| useDynamicMemory | <code>boolean</code> | <code>true</code> |  |
 
 <a name="tokenizeUwuSource"></a>
 
