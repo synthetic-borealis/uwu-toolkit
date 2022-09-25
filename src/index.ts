@@ -9,6 +9,7 @@ import isValidProgram from './utils/isValidProgram';
 import compileToBrainfuck from './compilers/Brainfuck';
 import compileToC from './compilers/C';
 import compileToCpp from './compilers/CPP';
+import compileToJsBase from './compilers/JavaScriptBase';
 import compileToJsWeb from './compilers/JavaScriptWeb';
 import compileToJsNode from './compilers/JavaScriptNode';
 import compileToPython from './compilers/Python';
@@ -20,6 +21,7 @@ export {
   compileToBrainfuck,
   compileToC,
   compileToCpp,
+  compileToJsBase,
   compileToJsWeb,
   compileToJsNode,
   compileToPython,
