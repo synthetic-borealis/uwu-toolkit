@@ -1,7 +1,3 @@
-// const { genIndent, tokenizeUwuSource } = require('../utils');
-// const LoopBoundaryMismatchError = require('../errors/loopBoundaryMismatch');
-// const WrongInputError = require('../errors/wrongInput');
-// const { isValidProgram } = require('../validation');
 import genIndent from '../utils/genIndent';
 import tokenizeUwuSource from '../utils/tokenizeUwuSource';
 import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';

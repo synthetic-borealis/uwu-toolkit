@@ -3,7 +3,7 @@ import tokenizeUwuSource from '../utils/tokenizeUwuSource';
 import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
 import isValidProgram from '../utils/isValidProgram';
 
-function compileToPython(source: string, useDynamicMemory = true) {
+function compileToPython(source: string, isMemoryDynamic = true) {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -18,11 +18,11 @@ function compileToPython(source: string, useDynamicMemory = true) {
     'position = 0',
   ];
 
-  if (useDynamicMemory) {
-    outputCodeArray.push('cells = [0]');
+  if (isMemoryDynamic) {
+    outputCodeArray.push('cells = bytearray([0])');
     outputCodeArray.push('');
   } else {
-    outputCodeArray.push('cells = [0] * 30000');
+    outputCodeArray.push('cells = bytearray([0] * 30000)');
     outputCodeArray.push('');
   }
 
@@ -33,7 +33,7 @@ function compileToPython(source: string, useDynamicMemory = true) {
 
     switch (command) {
       case 'OwO':
-        if (useDynamicMemory) {
+        if (isMemoryDynamic) {
           outputCodeArray.push(`${indent}if position + 1 == len(cells):`);
           outputCodeArray.push(`${indent}${genIndent(1, indentSize, indentChar)}cells.append(0)`);
           outputCodeArray.push(`${indent}`);
