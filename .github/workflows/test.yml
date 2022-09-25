@@ -8,6 +8,7 @@ on:
     branches: [ main, develop ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -29,8 +30,6 @@ jobs:
         with:
           python-version: "3.10"
       - name: Install dependencies
-        # run: npm ci
-        run: yarn install --frozen-lockfile
+        run: npm ci
       - name: Run tests
-        # run: npm test
-        run: yarn test
+        run: npm test
