@@ -2,6 +2,7 @@ const uwuRegex = /OwO|°w°|UwU|QwQ|@w@|>w<|~w~|¯w¯/g;
 
 /**
  * Converts UwU source code to an array of UwU commands.
+ * @category Utility
  * @param {string} source UwU source code in string form.
  * @returns {Array<string>} An array of UwU commands.
  */

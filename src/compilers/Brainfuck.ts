@@ -4,11 +4,12 @@ import isValidProgram from '../utils/isValidProgram';
 
 /**
  * Converts UwU source code to Brainfuck.
+ * @category Compilation
  * @param {string} source UwU source code to convert.
  * @returns {string} Generated Brainfuck code.
- * @throws {LoopBoundaryMismatchError} when mismatching loop boundaries are detected.
+ * @throws {LoopBoundaryMismatchError} if mismatching loop boundaries are detected.
  */
-function compileToBrainfuck(source: string): string {
+function compileToBrainfuck(source: string) {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();

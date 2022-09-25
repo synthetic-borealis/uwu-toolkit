@@ -3,6 +3,16 @@ import tokenizeUwuSource from '../utils/tokenizeUwuSource';
 import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
 import isValidProgram from '../utils/isValidProgram';
 
+/**
+ * Converts UwU source code to a C++ program.
+ * @category Compilation
+ * @param {string} source UwU source to convert.
+ * @param {boolean} isMemoryDynamic Enable dynamic memory array.
+ * @param {number} indentSize Indentation size.
+ * @param {string} indentChar Indentation character.
+ * @returns {string} Generated C++ code.
+ * @throws {LoopBoundaryMismatchError} if mismatching loop boundaries are detected.
+ */
 function compileToCpp(source: string, isMemoryDynamic = true, indentSize = 4, indentChar = ' ') {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {

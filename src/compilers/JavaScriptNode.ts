@@ -1,6 +1,17 @@
 import genIndent from '../utils/genIndent';
 import compileToJsBase from './JavaScriptBase';
 
+/**
+ * Converts an UwU program to JavaScript (Node.js).
+ * @category Compilation
+ * @param {string} source UwU source to convert.
+ * @param {boolean} isMemoryDynamic Enable dynamic memory array.
+ * @param {string} mainFunctionName Main function name.
+ * @param {number} indentSize Indentation size.
+ * @param {string} indentChar Indentation character.
+ * @returns {string} Generated JavaScript code.
+ * @throws {LoopBoundaryMismatchError} if mismatching loop boundaries are detected.
+ */
 function compileToJsNode(
   source: string,
   isMemoryDynamic = true,

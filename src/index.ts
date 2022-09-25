@@ -4,6 +4,7 @@ import LoopBoundaryMismatchError from './errors/loopBoundaryMismatchError';
 // Utilities
 import tokenizeUwuSource from './utils/tokenizeUwuSource';
 import isValidProgram from './utils/isValidProgram';
+import genIndent from './utils/genIndent';
 
 // Transpilers
 import compileToBrainfuck from './compilers/Brainfuck';
@@ -18,6 +19,7 @@ export {
   LoopBoundaryMismatchError,
   tokenizeUwuSource,
   isValidProgram,
+  genIndent,
   compileToBrainfuck,
   compileToC,
   compileToCpp,

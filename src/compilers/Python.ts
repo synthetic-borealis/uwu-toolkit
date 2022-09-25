@@ -3,6 +3,14 @@ import tokenizeUwuSource from '../utils/tokenizeUwuSource';
 import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
 import isValidProgram from '../utils/isValidProgram';
 
+/**
+ * Converts an UwU program to a Python.
+ * @category Compilation
+ * @param {string} source UwU source to convert.
+ * @param {boolean} isMemoryDynamic Enable dynamic memory array.
+ * @returns {string} Generated Python code.
+ * @throws {LoopBoundaryMismatchError} if mismatching loop boundaries are detected.
+ */
 function compileToPython(source: string, isMemoryDynamic = true) {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {

@@ -5,11 +5,12 @@ import isValidProgram from '../utils/isValidProgram';
 
 /**
  * Converts UwU source code to a C program.
+ * @category Compilation
  * @param {string} source UwU source code to convert.
  * @param {number} indentSize Indentation size.
  * @param {string} indentChar Indentation character.
  * @returns {string} Generated C code.
- * @throws {LoopBoundaryMismatchError} Loop starts must have matching loop ends and vice versa.
+ * @throws {LoopBoundaryMismatchError} if mismatching loop boundaries are detected.
  */
 function compileToC(source: string, indentSize = 4, indentChar = ' ') {
   const sourceArray = tokenizeUwuSource(source);

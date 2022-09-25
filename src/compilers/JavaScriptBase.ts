@@ -3,6 +3,20 @@ import tokenizeUwuSource from '../utils/tokenizeUwuSource';
 import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
 import isValidProgram from '../utils/isValidProgram';
 
+/**
+ * Converts an UwU program to JavaScript.
+ * @description This function is used by {@link compileToJsWeb} and {@link compileToJsNode}
+ * to generate their output. You can use it to write functions
+ * that generate output for other JavaScript-based platforms.
+ * @category Compilation
+ * @param {string} source UwU source to convert.
+ * @param {boolean} isMemoryDynamic Enable dynamic memory array.
+ * @param {boolean} enableUserInput Enable user input handling.
+ * @param {number} indentSize Indentation size.
+ * @param {string} indentChar Indentation character.
+ * @returns @returns {<{ declaration: string[], definition: string[] }>}
+ * @throws {@link LoopBoundaryMismatchError} if mismatching loop boundaries are detected.
+ */
 function compileToJsBase(
   source: string,
   isMemoryDynamic: boolean,
