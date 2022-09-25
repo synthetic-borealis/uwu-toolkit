@@ -21,7 +21,9 @@
     "url": "https://github.com/synthetic-borealis/uwu-toolkit/issues"
   },
   "scripts": {
-    "lint": "eslint src/**/*.{ts,js} __tests__/**/*.{ts,js}",
+    "lint": "eslint src/**/*.{ts,js} __tests__/**/*.{ts,js} test-utils/**/*.{ts,js}",
+    "build": "tsc",
+    "clean": "rimraf lib/ types/ dist/",
     "test": "jest"
   },
   "devDependencies": {
