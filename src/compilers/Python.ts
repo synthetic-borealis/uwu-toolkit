@@ -72,11 +72,11 @@ function compileToPython(source: string, isMemoryDynamic = true) {
         break;
 
       case '¯w¯':
-        currentDepth = currentDepth > 0 ? currentDepth - 1 : 0;
+        currentDepth = Math.max(currentDepth - 1, 0);
         outputCodeArray.push('');
         break;
 
-      default:
+      // skip default case
     }
   });
 

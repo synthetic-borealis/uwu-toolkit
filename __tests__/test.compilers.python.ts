@@ -1,9 +1,8 @@
 import { PythonShell } from 'python-shell';
 import fs from 'fs/promises';
 import { LoopBoundaryMismatchError, compileToPython } from '../src';
-import { helloUwu, invalidUwu } from '../test-utils/constants';
+import { helloUwu, invalidUwu, userInputCode } from '../test-utils/constants';
 
-const userInputCode = '>w< @w@';
 const sourceFile = 'test_py.py';
 
 function checkGeneratedCode(codeToCheck: string) {

@@ -93,13 +93,13 @@ function compileToCpp(source: string, isMemoryDynamic = true, indentSize = 4, in
         break;
 
       case '¯w¯':
-        currentDepth = currentDepth > 0 ? currentDepth - 1 : 0;
+        currentDepth = Math.max(currentDepth - 1, 0);
         indent = genIndent(currentDepth + 1, indentSize, indentChar);
         outputCodeArray.push(`${indent}}`);
         outputCodeArray.push('');
         break;
 
-      default:
+      // skip default case
     }
   });
 

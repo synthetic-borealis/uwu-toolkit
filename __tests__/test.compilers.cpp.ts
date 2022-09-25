@@ -3,10 +3,9 @@ import fs from 'fs/promises';
 import util from 'util';
 import childProcess from 'child_process';
 import { LoopBoundaryMismatchError, compileToCpp } from '../src';
-import { helloUwu, invalidUwu } from '../test-utils/constants';
+import { helloUwu, invalidUwu, userInputCode } from '../test-utils/constants';
 
 const exec = util.promisify(childProcess.exec);
-const userInputCode = '>w< @w@';
 const exeExtension = process.platform === 'win32' ? '.exe' : '';
 const executableFile = `test_cpp${exeExtension}`;
 const sourceFile = 'test_cpp.cpp';

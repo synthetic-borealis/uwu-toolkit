@@ -2165,6 +2165,13 @@ has@^1.0.3:
   dependencies:
     function-bind "^1.1.1"
 
+hirnfick@^8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/hirnfick/-/hirnfick-8.0.1.tgz#4acb8d269e1589dfae4bf5b7d9fd813ff6e1a433"
+  integrity sha512-qsyQeyT3Ix5nT19lqeoPRcaNMiuNmoRSdsM+UTuMCVKRnL7bPMENG6lF9tzyVozlgRWhTUmk+m8ix4bL3dfI+A==
+  dependencies:
+    minimist "^1.2.6"
+
 html-escaper@^2.0.0:
   version "2.0.2"
   resolved "https://registry.npmjs.org/html-escaper/-/html-escaper-2.0.2.tgz"

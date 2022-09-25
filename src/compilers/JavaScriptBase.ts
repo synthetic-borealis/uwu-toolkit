@@ -82,7 +82,7 @@ function compileToJsBase(
         break;
 
       case '¯w¯':
-        currentDepth = currentDepth > 0 ? currentDepth - 1 : 0;
+        currentDepth = Math.max(currentDepth - 1, 0);
         indent = genIndent(currentDepth + 1, indentSize, indentChar);
         outputDefinitionLines.push(`${indent}}`);
         break;

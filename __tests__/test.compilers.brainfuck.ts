@@ -1,11 +1,12 @@
+import * as hirnfick from 'hirnfick';
 import fs from 'fs/promises';
 import util from 'util';
 import childProcess from 'child_process';
-import { compileToJsNode } from '../src';
-import { helloUwu, userInputCode } from '../test-utils/constants';
+import { compileToBrainfuck, LoopBoundaryMismatchError } from '../src';
+import { helloUwu, invalidUwu, userInputCode } from '../test-utils/constants';
 
 const exec = util.promisify(childProcess.exec);
-const sourceFile = 'test_js_node.js';
+const sourceFile = 'test_bf.js';
 
 function checkGeneratedCode(codeToCheck: string) {
   beforeAll(() => fs.writeFile(sourceFile, codeToCheck));
@@ -16,16 +17,18 @@ function checkGeneratedCode(codeToCheck: string) {
     }));
 }
 
-describe('Compilation to JavaScript (Node.js)', () => {
-  describe('Code generation (dynamic array)', () => {
-    checkGeneratedCode(compileToJsNode(helloUwu));
+describe('Compilation to Brainfuck', () => {
+  describe('Error handling', () => {
+    it('Throws LoopBoundaryMismatchError when loop boundaries are mismatching', () => {
+      expect(() => compileToBrainfuck(invalidUwu)).toThrow(LoopBoundaryMismatchError);
+    });
   });
-  describe('Code generation (fixed array)', () => {
-    checkGeneratedCode(compileToJsNode(helloUwu, false));
+  describe('Code generation', () => {
+    checkGeneratedCode(hirnfick.compileToJsNode(compileToBrainfuck(helloUwu)));
   });
   describe('Code generation (with user input)', () => {
     beforeAll(() => {
-      const outputCode = compileToJsNode(userInputCode);
+      const outputCode = hirnfick.compileToJsNode(compileToBrainfuck(userInputCode));
       return fs.writeFile(sourceFile, outputCode);
     });
     afterAll(() => fs.unlink(sourceFile));

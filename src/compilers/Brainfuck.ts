@@ -13,37 +13,46 @@ function compileToBrainfuck(source: string): string {
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
   }
+  let output = '';
 
-  return sourceArray.map((value) => {
+  sourceArray.forEach((value) => {
     switch (value) {
       case 'OwO':
-        return '>';
+        output += '>';
+        break;
 
       case '°w°':
-        return '<';
+        output += '<';
+        break;
 
       case 'UwU':
-        return '+';
+        output += '+';
+        break;
 
       case 'QwQ':
-        return '-';
+        output += '-';
+        break;
 
       case '@w@':
-        return '.';
+        output += '.';
+        break;
 
       case '>w<':
-        return ',';
+        output += ',';
+        break;
 
       case '~w~':
-        return '[';
+        output += '[';
+        break;
 
       case '¯w¯':
-        return ']';
+        output += ']';
+        break;
 
-      default:
-        return '';
+      // skip default case
     }
-  }).join('');
+  });
+  return output;
 }
 
 export default compileToBrainfuck;

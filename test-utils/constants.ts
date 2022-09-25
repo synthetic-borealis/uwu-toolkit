@@ -16,5 +16,6 @@ const invalidUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
   + 'OwO OwO @w@ °w° QwQ @w@ °w° @w@ OwO OwO OwO @w@ @w@ °w° °w°'
   + '°w° QwQ QwQ QwQ QwQ QwQ QwQ ¯w¯ QwQ QwQ QwQ QwQ @w@ OwO OwO'
   + 'UwU @w@ OwO OwO UwU UwU @w@';
+const userInputCode = '>w< @w@';
 
-export { helloUwu, invalidUwu };
+export { helloUwu, invalidUwu, userInputCode };
