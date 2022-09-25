@@ -17,13 +17,10 @@ function compileToJsNode(
 
   const putchar = [
     'function putchar() {',
-    `${indent}const buffer = Buffer.alloc(1);`,
-    `${indent}fs.readSync(process.stdin.fd, buffer, 0, 1);`,
-    `${indent}return buffer[0];`,
+    `${indent}process.stdout.write(String.fromCharCode(cells[position]));`,
     '}\n',
   ];
   const getchar = [
-    'const fs = require(\'fs\');\n',
     'function getchar() {',
     `${indent}const buffer = Buffer.alloc(1);`,
     `${indent}fs.readSync(process.stdin.fd, buffer, 0, 1);`,
