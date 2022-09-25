@@ -1,21 +1,9 @@
-const { genIndent, tokenizeUwuSource } = require('../utils');
-const LoopBoundaryMismatchError = require('../errors/loopBoundaryMismatch');
-const WrongInputError = require('../errors/wrongInput');
-const { isValidProgram } = require('../validation');
+import genIndent from '../utils/genIndent';
+import tokenizeUwuSource from '../utils/tokenizeUwuSource';
+import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
+import isValidProgram from '../utils/isValidProgram';
 
-/**
- * Converts UwU source code to a Python script.
- * @param {string} source UwU source code to convert.
- * @param {boolean} useDynamicMemory
- * @returns {string} Generated Python code.
- * @throws {WrongInputError} Input must be a string.
- * @throws {LoopBoundaryMismatchError} Loop starts must have matching loop ends and vice versa.
- */
-function transpileToPython(source, useDynamicMemory = true) {
-  if (typeof source !== 'string') {
-    throw new WrongInputError('Input must be a string');
-  }
-
+function compileToPython(source: string, isMemoryDynamic = true) {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -30,11 +18,11 @@ function transpileToPython(source, useDynamicMemory = true) {
     'position = 0',
   ];
 
-  if (useDynamicMemory) {
-    outputCodeArray.push('cells = [0]');
+  if (isMemoryDynamic) {
+    outputCodeArray.push('cells = bytearray([0])');
     outputCodeArray.push('');
   } else {
-    outputCodeArray.push('cells = [0] * 30000');
+    outputCodeArray.push('cells = bytearray([0] * 30000)');
     outputCodeArray.push('');
   }
 
@@ -45,7 +33,7 @@ function transpileToPython(source, useDynamicMemory = true) {
 
     switch (command) {
       case 'OwO':
-        if (useDynamicMemory) {
+        if (isMemoryDynamic) {
           outputCodeArray.push(`${indent}if position + 1 == len(cells):`);
           outputCodeArray.push(`${indent}${genIndent(1, indentSize, indentChar)}cells.append(0)`);
           outputCodeArray.push(`${indent}`);
@@ -97,4 +85,4 @@ function transpileToPython(source, useDynamicMemory = true) {
   return outputCodeArray.join('\n');
 }
 
-module.exports = transpileToPython;
+export default compileToPython;

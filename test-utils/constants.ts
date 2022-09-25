@@ -1,4 +1,3 @@
-const uwuRegex = /OwO|°w°|UwU|QwQ|@w@|>w<|~w~|¯w¯/g;
 const helloUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
   + 'UwU UwU UwU UwU ~w~ OwO UwU UwU OwO UwU UwU UwU OwO UwU UwU'
   + 'UwU OwO UwU OwO UwU UwU UwU UwU °w° °w° °w° °w° °w° QwQ ¯w¯'
@@ -18,4 +17,4 @@ const invalidUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
   + '°w° QwQ QwQ QwQ QwQ QwQ QwQ ¯w¯ QwQ QwQ QwQ QwQ @w@ OwO OwO'
   + 'UwU @w@ OwO OwO UwU UwU @w@';
 
-module.exports = { uwuRegex, helloUwu, invalidUwu };
+export { helloUwu, invalidUwu };

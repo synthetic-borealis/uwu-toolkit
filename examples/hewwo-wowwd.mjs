@@ -1,4 +1,4 @@
-import * as uwuTK from '../index.js';
+import * as uwuTK from '../src/index.js';
 
 const helloUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
   + 'UwU UwU UwU UwU ~w~ OwO UwU UwU OwO UwU UwU UwU OwO UwU UwU'

@@ -1,22 +1,9 @@
-const { genIndent, tokenizeUwuSource } = require('../utils');
-const LoopBoundaryMismatchError = require('../errors/loopBoundaryMismatch');
-const WrongInputError = require('../errors/wrongInput');
-const { isValidProgram } = require('../validation');
+import genIndent from '../utils/genIndent';
+import tokenizeUwuSource from '../utils/tokenizeUwuSource';
+import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
+import isValidProgram from '../utils/isValidProgram';
 
-/**
- * Converts UwU source code to a C++ program.
- * @param {string} source UwU source code to convert.
- * @param {number} indentSize Indentation size (default = 1).
- * @param {string} indentChar Indentation character (default is tab).
- * @returns {string} Generated C++ code.
- * @throws {WrongInputError} Input must be a string.
- * @throws {LoopBoundaryMismatchError} Loop starts must have matching loop ends and vice versa.
- */
-function transpileToCpp(source, useDynamicMemory = true, indentSize = 1, indentChar = '\t') {
-  if (typeof source !== 'string') {
-    throw new WrongInputError('Input must be a string');
-  }
-
+function compileToCpp(source: string, isMemoryDynamic = true, indentSize = 4, indentChar = ' ') {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -34,7 +21,7 @@ function transpileToCpp(source, useDynamicMemory = true, indentSize = 1, indentC
     `${indent}int position = 0;`,
   ];
 
-  if (useDynamicMemory) {
+  if (isMemoryDynamic) {
     outputCodeArray.push(`${indent}std::vector<char> cells { 0 };\n`);
   } else {
     outputCodeArray.push(`${indent}std::vector<char> cells { std::vector<char>(30000) };\n`);
@@ -46,7 +33,7 @@ function transpileToCpp(source, useDynamicMemory = true, indentSize = 1, indentC
     indent = genIndent(currentDepth + 1, indentSize, indentChar);
     switch (command) {
       case 'OwO':
-        if (useDynamicMemory) {
+        if (isMemoryDynamic) {
           outputCodeArray.push(`${indent}if (position + 1 == cells.size())`);
           outputCodeArray.push(`${indent}{`);
           indent += genIndent(1, indentSize, indentChar);
@@ -120,4 +107,4 @@ function transpileToCpp(source, useDynamicMemory = true, indentSize = 1, indentC
   return outputCodeArray.join('\n');
 }
 
-module.exports = transpileToCpp;
+export default compileToCpp;

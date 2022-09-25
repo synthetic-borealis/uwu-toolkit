@@ -1,22 +1,17 @@
-const { genIndent, tokenizeUwuSource } = require('../utils');
-const LoopBoundaryMismatchError = require('../errors/loopBoundaryMismatch');
-const WrongInputError = require('../errors/wrongInput');
-const { isValidProgram } = require('../validation');
+import genIndent from '../utils/genIndent';
+import tokenizeUwuSource from '../utils/tokenizeUwuSource';
+import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
+import isValidProgram from '../utils/isValidProgram';
 
 /**
  * Converts UwU source code to a C program.
  * @param {string} source UwU source code to convert.
- * @param {number} indentSize Indentation size (default = 1).
- * @param {string} indentChar Indentation character (default is tab).
+ * @param {number} indentSize Indentation size.
+ * @param {string} indentChar Indentation character.
  * @returns {string} Generated C code.
- * @throws {WrongInputError} Input must be a string.
  * @throws {LoopBoundaryMismatchError} Loop starts must have matching loop ends and vice versa.
  */
-function transpileToC(source, indentSize = 1, indentChar = '\t') {
-  if (typeof source !== 'string') {
-    throw new WrongInputError('Input must be a string');
-  }
-
+function compileToC(source: string, indentSize = 4, indentChar = ' ') {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -30,8 +25,7 @@ function transpileToC(source, indentSize = 1, indentChar = '\t') {
     '',
     'int main()',
     '{',
-    `${indent}char array[30000] = {0};`,
-    `${indent}char* ptr = array;`,
+    `${indent}unsigned char cells[30000] = {0};`,
     `${indent}int position = 0;`,
     '',
   ];
@@ -46,8 +40,7 @@ function transpileToC(source, indentSize = 1, indentChar = '\t') {
         outputCodeArray.push(`${indent}if (position + 1 < 30000)`);
         outputCodeArray.push(`${indent}{`);
         indent += genIndent(1, indentSize, indentChar);
-        outputCodeArray.push(`${indent + genIndent(1, indentSize, indentChar)}++position;`);
-        outputCodeArray.push(`${indent + genIndent(1, indentSize, indentChar)}++ptr;`);
+        outputCodeArray.push(`${indent}++position;`);
         indent = genIndent(currentDepth + 1, indentSize, indentChar);
         outputCodeArray.push(`${indent}}`);
         break;
@@ -57,33 +50,38 @@ function transpileToC(source, indentSize = 1, indentChar = '\t') {
         outputCodeArray.push(`${indent}{`);
         indent += genIndent(1, indentSize, indentChar);
         outputCodeArray.push(`${indent}--position;`);
-        outputCodeArray.push(`${indent}--ptr;`);
         indent = genIndent(currentDepth + 1, indentSize, indentChar);
         outputCodeArray.push(`${indent}}`);
         break;
 
       case 'UwU':
-        outputCodeArray.push(`${indent}if (*ptr < 255)`);
+        outputCodeArray.push(`${indent}if (cells[position] < 255)`);
+        outputCodeArray.push(`${indent}{`);
         indent += genIndent(1, indentSize, indentChar);
-        outputCodeArray.push(`${indent}++*ptr;`);
+        outputCodeArray.push(`${indent}cells[position] += 1;`);
+        indent = genIndent(currentDepth + 1, indentSize, indentChar);
+        outputCodeArray.push(`${indent}}`);
         break;
 
       case 'QwQ':
-        outputCodeArray.push(`${indent}if (*ptr > 0)`);
+        outputCodeArray.push(`${indent}if (cells[position] > 0)`);
+        outputCodeArray.push(`${indent}{`);
         indent += genIndent(1, indentSize, indentChar);
-        outputCodeArray.push(`${indent}--*ptr;`);
+        outputCodeArray.push(`${indent}cells[position] -= 1;`);
+        indent = genIndent(currentDepth + 1, indentSize, indentChar);
+        outputCodeArray.push(`${indent}}`);
         break;
 
       case '@w@':
-        outputCodeArray.push(`${indent}putchar(*ptr);`);
+        outputCodeArray.push(`${indent}putchar(cells[position]);`);
         break;
 
       case '>w<':
-        outputCodeArray.push(`${indent}*ptr = (char)getchar();`);
+        outputCodeArray.push(`${indent}cells[position] = (unsigned char)getchar();`);
         break;
 
       case '~w~':
-        outputCodeArray.push(`${indent}while (*ptr)`);
+        outputCodeArray.push(`${indent}while (cells[position] > 0)`);
         outputCodeArray.push(`${indent}{`);
         currentDepth += 1;
         break;
@@ -104,4 +102,4 @@ function transpileToC(source, indentSize = 1, indentChar = '\t') {
   return outputCodeArray.join('\n');
 }
 
-module.exports = transpileToC;
+export default compileToC;
