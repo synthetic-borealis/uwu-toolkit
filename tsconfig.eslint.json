@@ -4,7 +4,7 @@
     "target": "es2016",
     "moduleDetection": "auto",
     "module": "commonjs",
-    "rootDirs": ["./src", "./__tests__", "./scripts"],
+    "rootDirs": ["./src", "./__tests__", "./test-utils", "./scripts"],
     "declaration": true,
     "declarationMap": true,
     "sourceMap": true,
