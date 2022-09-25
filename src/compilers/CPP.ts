@@ -7,7 +7,7 @@ import tokenizeUwuSource from '../utils/tokenizeUwuSource';
 import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
 import isValidProgram from '../utils/isValidProgram';
 
-function compileToCpp(source: string, useDynamicMemory = true, indentSize = 1, indentChar = '\t') {
+function compileToCpp(source: string, isMemoryDynamic = true, indentSize = 4, indentChar = ' ') {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -25,7 +25,7 @@ function compileToCpp(source: string, useDynamicMemory = true, indentSize = 1, i
     `${indent}int position = 0;`,
   ];
 
-  if (useDynamicMemory) {
+  if (isMemoryDynamic) {
     outputCodeArray.push(`${indent}std::vector<char> cells { 0 };\n`);
   } else {
     outputCodeArray.push(`${indent}std::vector<char> cells { std::vector<char>(30000) };\n`);
@@ -37,7 +37,7 @@ function compileToCpp(source: string, useDynamicMemory = true, indentSize = 1, i
     indent = genIndent(currentDepth + 1, indentSize, indentChar);
     switch (command) {
       case 'OwO':
-        if (useDynamicMemory) {
+        if (isMemoryDynamic) {
           outputCodeArray.push(`${indent}if (position + 1 == cells.size())`);
           outputCodeArray.push(`${indent}{`);
           indent += genIndent(1, indentSize, indentChar);
