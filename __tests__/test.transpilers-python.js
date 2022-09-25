@@ -1,4 +1,4 @@
-const uwuTK = require('../index');
+const uwuTK = require('../src');
 const { PythonShell } = require('python-shell');
 const should = require('should');
 

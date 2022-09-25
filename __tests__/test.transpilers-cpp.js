@@ -1,4 +1,4 @@
-const uwuTK = require('../index');
+const uwuTK = require('../src');
 const cppUtils = require('cpp-utils');
 const fs = require('fs/promises');
 const process = require('process');
