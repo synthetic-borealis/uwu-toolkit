@@ -7,4 +7,4 @@ class LoopBoundaryMismatchError extends Error {
   }
 }
 
-module.exports = LoopBoundaryMismatchError;
+export default LoopBoundaryMismatchError;

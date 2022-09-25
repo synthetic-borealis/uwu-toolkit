@@ -1,21 +1,9 @@
-const { genIndent, tokenizeUwuSource } = require('../utils');
-const LoopBoundaryMismatchError = require('../errors/loopBoundaryMismatch');
-const WrongInputError = require('../errors/wrongInput');
-const { isValidProgram } = require('../validation');
+import genIndent from '../utils/genIndent';
+import tokenizeUwuSource from '../utils/tokenizeUwuSource';
+import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
+import isValidProgram from '../utils/isValidProgram';
 
-/**
- * Converts UwU source code to a Python script.
- * @param {string} source UwU source code to convert.
- * @param {boolean} useDynamicMemory
- * @returns {string} Generated Python code.
- * @throws {WrongInputError} Input must be a string.
- * @throws {LoopBoundaryMismatchError} Loop starts must have matching loop ends and vice versa.
- */
-function transpileToPython(source, useDynamicMemory = true) {
-  if (typeof source !== 'string') {
-    throw new WrongInputError('Input must be a string');
-  }
-
+function compileToPython(source: string, useDynamicMemory = true) {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -97,4 +85,4 @@ function transpileToPython(source, useDynamicMemory = true) {
   return outputCodeArray.join('\n');
 }
 
-module.exports = transpileToPython;
+export default compileToPython;

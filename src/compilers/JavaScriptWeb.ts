@@ -1,23 +1,9 @@
-const { genIndent, tokenizeUwuSource } = require('../utils');
-const LoopBoundaryMismatchError = require('../errors/loopBoundaryMismatch');
-const WrongInputError = require('../errors/wrongInput');
-const { isValidProgram } = require('../validation');
+import genIndent from '../utils/genIndent';
+import tokenizeUwuSource from '../utils/tokenizeUwuSource';
+import LoopBoundaryMismatchError from '../errors/loopBoundaryMismatchError';
+import isValidProgram from '../utils/isValidProgram';
 
-/**
- * Converts UwU source code to JavaScript (Web).
- * @param {string} source UwU source code to convert.
- * @param {string} funcName Output function name (default = 'run').
- * @param {number} indentSize Indentation size (default = 4).
- * @param {string} indentChar Indentation character (default is space).
- * @returns {string} Generated JavaScript function source.
- * @throws {WrongInputError} Input must be a string.
- * @throws {LoopBoundaryMismatchError} Loop starts must have matching loop ends and vice versa.
- */
-function transpileToJsWeb(source, useDynamicMemory = true, funcName = 'main', indentSize = 2, indentChar = ' ') {
-  if (typeof source !== 'string') {
-    throw new WrongInputError('Input must be a string');
-  }
-
+function compileToJsWeb(source: string, useDynamicMemory = true, funcName = 'main', indentSize = 2, indentChar = ' ') {
   const sourceArray = tokenizeUwuSource(source);
   if (!isValidProgram(sourceArray)) {
     throw new LoopBoundaryMismatchError();
@@ -105,4 +91,4 @@ function transpileToJsWeb(source, useDynamicMemory = true, funcName = 'main', in
   return outputCodeArray.join('\n');
 }
 
-module.exports = transpileToJsWeb;
+export default compileToJsWeb;
