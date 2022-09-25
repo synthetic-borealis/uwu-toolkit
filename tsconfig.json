@@ -21,6 +21,7 @@
   "exclude": [
     "jest.config.ts",
     "__tests__",
+    "test-utils",
     "node_modules",
     ".idea",
     "scripts",
