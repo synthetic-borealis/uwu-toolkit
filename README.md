@@ -1,10 +1,10 @@
 # UwU Toolkit
 
+[![GitHub license](https://img.shields.io/github/license/synthetic-borealis/uwu-toolkit)](https://github.com/synthetic-borealis/uwu-toolkit/blob/main/LICENSE)
 [![npm version](https://badge.fury.io/js/uwu-toolkit.svg)](https://badge.fury.io/js/uwu-toolkit)
 ![Tests](https://github.com/synthetic-borealis/uwu-toolkit/actions/workflows/test.yml/badge.svg)
-[![GitHub license](https://img.shields.io/github/license/synthetic-borealis/uwu-toolkit)](https://github.com/synthetic-borealis/uwu-toolkit/blob/main/LICENSE)
 
-An UwU transpilation library for Node.js.
+An UwU source-to-source compilation library for web-browsers, Node.js & Deno.
 
 ## Contents
 
@@ -23,7 +23,7 @@ found [here](https://github.com/KiraDotRose/UwU).
 
 ## Installation
 
-Run `npm i uwu`
+Run `npm i uwu-toolkit` or `yarn add uwu-toolkit`.
 
 ## Usage
 
@@ -45,14 +45,14 @@ Run `npm i uwu`
 
 ### Table 1: Supported Commands by Output Language
 
-| Language         |   OwO   |   °w°   |   UwU   |   QwQ   |   @w@   |   >w<   |  \~w\~  |   ¯w¯   | Memory Size    |
-| :--------------- | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :------------: |
-| Brainfuck        | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | Not Applicable |
-| C                | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000         |
-| C++              | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
-| JavaScript (Web) | &check; | &check; | &check; | &check; | &check; | &cross; | &check; | &check; | 30,000/Dynamic |
-| JavaScript (CLI) | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
-| Python           | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
+| Language             |   OwO   |   °w°   |   UwU   |   QwQ   |   @w@   |   >w<   |  \~w\~  |   ¯w¯   | Memory Size    |
+|:---------------------| :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :-----: | :------------: |
+| Brainfuck            | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | Not Applicable |
+| C                    | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000         |
+| C++                  | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
+| JavaScript (Web)     | &check; | &check; | &check; | &check; | &check; | &cross; | &check; | &check; | 30,000/Dynamic |
+| JavaScript (Node.js) | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
+| Python               | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
 
 ## Examples
 
