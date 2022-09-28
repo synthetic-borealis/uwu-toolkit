@@ -1,7 +1,7 @@
 {
   "name": "uwu-toolkit",
   "version": "1.0.0",
-  "description": "An UwU transpilation library",
+  "description": "An UwU source-to-source compilation library",
   "author": "Elhanan Flesch",
   "license": "MIT",
   "main": "lib/index.js",

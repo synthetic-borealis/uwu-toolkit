@@ -40,7 +40,7 @@ Error.constructor
 
 #### Defined in
 
-[src/errors/loopBoundaryMismatchError.ts:5](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/errors/loopBoundaryMismatchError.ts#L5)
+[src/errors/loopBoundaryMismatchError.ts:5](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/errors/loopBoundaryMismatchError.ts#L5)
 
 ## Properties
 
