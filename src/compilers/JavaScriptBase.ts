@@ -5,8 +5,8 @@ import isValidProgram from '../utils/isValidProgram';
 
 /**
  * Converts an UwU program to JavaScript.
- * @description This function is used by {@link compileToJsWeb} and {@link compileToJsNode}
- * to generate their output. You can use it to write functions
+ * @description This function is used by {@link compileToJsWeb}, {@link compileToJsNode}
+ * and {@link compileToJsDeno} to generate their output. You can use it to write functions
  * that generate output for other JavaScript-based platforms.
  * @category Compilation
  * @param {string} source UwU source to convert.
