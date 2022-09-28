@@ -39,12 +39,10 @@ function compileToJsDeno(
     '}\n',
   ];
   const hasUserInput = source.indexOf('>w<') > -1;
-  const outputCodeArray: string[] = [];
-  if (hasUserInput) {
-    outputCodeArray.push('const fs = require(\'fs\');\n');
-  }
-  outputCodeArray.push(...declarationLines);
-  outputCodeArray.push(...putchar);
+  const outputCodeArray: string[] = [
+    ...declarationLines,
+    ...putchar,
+  ];
   if (hasUserInput) {
     outputCodeArray.push(...getchar);
   }
