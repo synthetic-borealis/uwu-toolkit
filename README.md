@@ -57,7 +57,7 @@ Run `npm i uwu-toolkit` or `yarn add uwu-toolkit`.
 
 ## Examples
 
-### Basic Usage - Node.js/CommonJS
+### CommonJS (Node)
 
 ```javascript
 const uwuTK = require('uwu-toolkit');
@@ -73,17 +73,48 @@ const helloUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
   + 'UwU @w@ OwO OwO UwU UwU @w@';
 
 try {
-  const helloJS = uwuTK.transpileToJsWeb(helloUwu);
+  const helloJS = uwuTK.compileToJsWeb(helloUwu);
   const hello = new Function(`${helloJS}return main().output;`);
 
   console.log(hello());
-}
-catch (err) {
+} catch (err) {
   console.error(`Error: ${err.message}`);
 }
 ```
 
-### Basic Usage - ES6
+### Program Validation - CommonJS (Node)
+
+```javascript
+const uwuTK = require('uwu-toolkit');
+
+const helloUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
+  + 'UwU UwU UwU UwU ~w~ OwO UwU UwU OwO UwU UwU UwU OwO UwU UwU'
+  + 'UwU OwO UwU OwO UwU UwU UwU UwU °w° °w° °w° °w° °w° QwQ ¯w¯'
+  + 'OwO UwU OwO UwU OwO QwQ OwO OwO QwQ OwO UwU ~w~ °w° ¯w¯ °w°'
+  + 'QwQ ¯w¯ OwO OwO @w@ OwO QwQ QwQ QwQ @w@ OwO OwO OwO QwQ @w@'
+  + '@w@ °w° °w° °w° UwU UwU UwU UwU UwU UwU UwU UwU UwU UwU @w@'
+  + 'OwO OwO @w@ °w° QwQ @w@ °w° @w@ OwO OwO OwO @w@ @w@ °w° °w°'
+  + '°w° QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ @w@ OwO OwO'
+  + 'UwU @w@ OwO OwO UwU UwU @w@';
+
+const invalidUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
+  + 'UwU UwU UwU UwU ~w~ OwO UwU UwU OwO UwU UwU UwU OwO UwU UwU'
+  + 'UwU OwO UwU OwO UwU UwU UwU UwU °w° °w° °w° °w° °w° QwQ ¯w¯'
+  + 'OwO UwU OwO UwU OwO QwQ OwO OwO QwQ OwO UwU ~w~ °w° ¯w¯ °w°'
+  + 'QwQ ¯w¯ OwO OwO @w@ OwO QwQ QwQ QwQ @w@ OwO OwO OwO QwQ @w@'
+  + '@w@ °w° °w° °w° UwU UwU UwU UwU UwU UwU UwU UwU UwU UwU @w@'
+  + 'OwO OwO @w@ °w° QwQ @w@ °w° @w@ OwO OwO OwO @w@ @w@ °w° °w°'
+  + '°w° QwQ QwQ QwQ QwQ QwQ QwQ ¯w¯ QwQ QwQ QwQ QwQ @w@ OwO OwO'
+  + 'UwU @w@ OwO OwO UwU UwU @w@';
+
+const validSourceArray = uwuTK.tokenizeUwuSource(helloUwu);
+const invalidSourceArray = uwuTK.tokenizeUwuSource(invalidUwu);
+
+console.log(uwuTK.isValidProgram(validSourceArray)); // true
+console.log(uwuTK.isValidProgram(invalidSourceArray)); // false
+```
+
+### ESM (Node)
 
 ```javascript
 import * as uwuTK from 'uwu-toolkit';
@@ -99,12 +130,61 @@ const helloUwu = 'UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO'
   + 'UwU @w@ OwO OwO UwU UwU @w@';
 
 try {
-  const helloJS = uwuTK.transpileToJsWeb(helloUwu);
+  const helloJS = uwuTK.compileToJsWeb(helloUwu);
   const hello = new Function(`${helloJS}return main().output;`);
 
   console.log(hello());
+} catch (err) {
+  console.error(`Error: ${err.message}`);
 }
-catch (err) {
+```
+
+### ESM (Deno)
+
+```javascript
+import * as uwuTK from "https://jspm.dev/uwu-toolkit";
+
+const helloUwu = "UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO"
+  + "UwU UwU UwU UwU ~w~ OwO UwU UwU OwO UwU UwU UwU OwO UwU UwU"
+  + "UwU OwO UwU OwO UwU UwU UwU UwU °w° °w° °w° °w° °w° QwQ ¯w¯"
+  + "OwO UwU OwO UwU OwO QwQ OwO OwO QwQ OwO UwU ~w~ °w° ¯w¯ °w°"
+  + "QwQ ¯w¯ OwO OwO @w@ OwO QwQ QwQ QwQ @w@ OwO OwO OwO QwQ @w@"
+  + "@w@ °w° °w° °w° UwU UwU UwU UwU UwU UwU UwU UwU UwU UwU @w@"
+  + "OwO OwO @w@ °w° QwQ @w@ °w° @w@ OwO OwO OwO @w@ @w@ °w° °w°"
+  + "°w° QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ @w@ OwO OwO"
+  + "UwU @w@ OwO OwO UwU UwU @w@";
+
+try {
+  const helloJS = uwuTK.compileToJsWeb(helloUwu);
+  const hello = new Function(`${helloJS}return main().output;`);
+
+  console.log(hello());
+} catch (err) {
+  console.error(`Error: ${err.message}`);
+}
+```
+
+### TypeScript (Deno)
+
+```typescript
+import * as uwuTK from "https://cdn.jsdelivr.net/gh/synthetic-borealis/uwu-toolkit/deno/index.ts";
+
+const helloUwu = "UwU UwU UwU UwU UwU UwU UwU UwU ~w~ OwO" +
+  "UwU UwU UwU UwU ~w~ OwO UwU UwU OwO UwU UwU UwU OwO UwU UwU" +
+  "UwU OwO UwU OwO UwU UwU UwU UwU °w° °w° °w° °w° °w° QwQ ¯w¯" +
+  "OwO UwU OwO UwU OwO QwQ OwO OwO QwQ OwO UwU ~w~ °w° ¯w¯ °w°" +
+  "QwQ ¯w¯ OwO OwO @w@ OwO QwQ QwQ QwQ @w@ OwO OwO OwO QwQ @w@" +
+  "@w@ °w° °w° °w° UwU UwU UwU UwU UwU UwU UwU UwU UwU UwU @w@" +
+  "OwO OwO @w@ °w° QwQ @w@ °w° @w@ OwO OwO OwO @w@ @w@ °w° °w°" +
+  "°w° QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ QwQ @w@ OwO OwO" +
+  "UwU @w@ OwO OwO UwU UwU @w@";
+
+try {
+  const helloJS = uwuTK.compileToJsWeb(helloUwu);
+  const hello = new Function(`${helloJS}return main().output;`);
+
+  console.log(hello());
+} catch (err) {
   console.error(`Error: ${err.message}`);
 }
 ```
@@ -126,6 +206,7 @@ catch (err) {
       <textarea id="output-box" readonly rows="8" style="width: 90%;"></textarea>
     </p>
     <button id="run-button">Run</button>
+
     <script>
       const runButton = document.getElementById('run-button');
       const outputBox = document.getElementById('output-box');
@@ -142,12 +223,11 @@ catch (err) {
       outputBox.value = '';
       runButton.addEventListener('click', () => {
         try {
-          const helloWorldProgram = uwuTK.transpileToJsWeb(helloUwu);
+          const helloWorldProgram = uwuTK.compileToJsWeb(helloUwu);
           const helloWorld = new Function(`${helloWorldProgram} return main().output;`);
 
           outputBox.value += helloWorld();
-        }
-        catch (err) {
+        } catch (err) {
           outputBox.value += `Error: ${err.message}`;
         }
       });

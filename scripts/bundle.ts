@@ -9,7 +9,7 @@ console.log('Building browser bundle...');
 
 const result = esbuild.buildSync({
   entryPoints: ['src/index.ts'],
-  outfile: 'dist/uwu-tk.js',
+  outfile: 'dist/uwu-toolkit.js',
   bundle: true,
   sourcemap: 'linked',
   minify: true,
