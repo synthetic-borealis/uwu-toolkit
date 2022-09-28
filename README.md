@@ -52,6 +52,7 @@ Run `npm i uwu-toolkit` or `yarn add uwu-toolkit`.
 | C++                  | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
 | JavaScript (Web)     | &check; | &check; | &check; | &check; | &check; | &cross; | &check; | &check; | 30,000/Dynamic |
 | JavaScript (Node.js) | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
+| JavaScript (Deno)    | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
 | Python               | &check; | &check; | &check; | &check; | &check; | &check; | &check; | &check; | 30,000/Dynamic |
 
 ## Examples
