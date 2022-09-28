@@ -3,6 +3,7 @@
 [![GitHub license](https://img.shields.io/github/license/synthetic-borealis/uwu-toolkit)](https://github.com/synthetic-borealis/uwu-toolkit/blob/main/LICENSE)
 [![npm version](https://badge.fury.io/js/uwu-toolkit.svg)](https://badge.fury.io/js/uwu-toolkit)
 ![Tests](https://github.com/synthetic-borealis/uwu-toolkit/actions/workflows/test.yml/badge.svg)
+[![codecov](https://codecov.io/github/synthetic-borealis/uwu-toolkit/branch/main/graph/badge.svg?token=FNGQ35KT0M)](https://codecov.io/github/synthetic-borealis/uwu-toolkit)
 
 An UwU source-to-source compilation library for web-browsers, Node.js & Deno.
 
