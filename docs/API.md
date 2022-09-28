@@ -1,197 +1,362 @@
-## Classes
+uwu-toolkit
 
-<dl>
-<dt><a href="#LoopBoundaryMismatchError">LoopBoundaryMismatchError</a></dt>
-<dd></dd>
-<dt><a href="#WrongInputError">WrongInputError</a></dt>
-<dd></dd>
-</dl>
+# uwu-toolkit
 
-## Functions
+## Table of contents
 
-<dl>
-<dt><a href="#transpileToBrainfuck">transpileToBrainfuck(source)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts UwU source code to Brainfuck.</p>
-</dd>
-<dt><a href="#transpileToC">transpileToC(source, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts UwU source code to a C program.</p>
-</dd>
-<dt><a href="#transpileToCpp">transpileToCpp(source, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts UwU source code to a C++ program.</p>
-</dd>
-<dt><a href="#transpileToJsCLI">transpileToJsCLI(source, useDynamicMemory, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts an UwU program to JavaScript (CLI).</p>
-</dd>
-<dt><a href="#transpileToJsWeb">transpileToJsWeb(source, funcName, indentSize, indentChar)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts UwU source code to JavaScript (Web).</p>
-</dd>
-<dt><a href="#transpileToPython">transpileToPython(source, useDynamicMemory)</a> ⇒ <code>string</code></dt>
-<dd><p>Converts UwU source code to a Python script.</p>
-</dd>
-<dt><a href="#tokenizeUwuSource">tokenizeUwuSource(source)</a> ⇒ <code>Array.&lt;string&gt;</code></dt>
-<dd><p>Converts UwU source code to an array of UwU commands.</p>
-</dd>
-<dt><a href="#isValidProgram">isValidProgram(sourceArray)</a> ⇒ <code>boolean</code></dt>
-<dd><p>Validates an UwU program by looking for umatched loop starts/ends.</p>
-</dd>
-</dl>
+### Classes
 
-<a name="LoopBoundaryMismatchError"></a>
+- [LoopBoundaryMismatchError](classes/LoopBoundaryMismatchError.md)
 
-## LoopBoundaryMismatchError
-**Kind**: global class  
-<a name="new_LoopBoundaryMismatchError_new"></a>
+### Compilation Functions
 
-### new LoopBoundaryMismatchError()
-LoopBoundaryMismatch Error constructor.
+- [compileToBrainfuck](API.md#compiletobrainfuck)
+- [compileToC](API.md#compiletoc)
+- [compileToCpp](API.md#compiletocpp)
+- [compileToJsBase](API.md#compiletojsbase)
+- [compileToJsDeno](API.md#compiletojsdeno)
+- [compileToJsNode](API.md#compiletojsnode)
+- [compileToJsWeb](API.md#compiletojsweb)
+- [compileToPython](API.md#compiletopython)
 
-<a name="WrongInputError"></a>
+### Utility Functions
 
-## WrongInputError
-**Kind**: global class  
-<a name="new_WrongInputError_new"></a>
+- [genIndent](API.md#genindent)
+- [tokenizeUwuSource](API.md#tokenizeuwusource)
 
-### new WrongInputError(message)
-WrongInput Error contructor.
+### Validation Functions
 
+- [isValidProgram](API.md#isvalidprogram)
 
-| Param | Type |
-| --- | --- |
-| message | <code>string</code> | 
+## Compilation Functions
 
-<a name="transpileToBrainfuck"></a>
+### compileToBrainfuck
 
-## transpileToBrainfuck(source) ⇒ <code>string</code>
+▸ **compileToBrainfuck**(`source`): `string`
+
 Converts UwU source code to Brainfuck.
 
-**Kind**: global function  
-**Returns**: <code>string</code> - Generated Brainfuck code.  
-**Throws**:
+**`Throws`**
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string or an array of strings.
-- [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
+if mismatching loop boundaries are detected.
 
+#### Parameters
 
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>string</code> | UwU source code to convert. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | UwU source code to convert. |
 
-<a name="transpileToC"></a>
+#### Returns
 
-## transpileToC(source, indentSize, indentChar) ⇒ <code>string</code>
+`string`
+
+Generated Brainfuck code.
+
+#### Defined in
+
+[src/compilers/Brainfuck.ts:12](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/Brainfuck.ts#L12)
+
+___
+
+### compileToC
+
+▸ **compileToC**(`source`, `indentSize?`, `indentChar?`): `string`
+
 Converts UwU source code to a C program.
 
-**Kind**: global function  
-**Returns**: <code>string</code> - Generated C code.  
-**Throws**:
+**`Throws`**
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
-- [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
+if mismatching loop boundaries are detected.
 
+#### Parameters
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| source | <code>string</code> |  | UwU source code to convert. |
-| indentSize | <code>number</code> | <code>1</code> | Indentation size (default = 1). |
-| indentChar | <code>string</code> | <code>&quot;\t&quot;</code> | Indentation character (default is tab). |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `source` | `string` | `undefined` | UwU source code to convert. |
+| `indentSize` | `number` | `4` | Indentation size. |
+| `indentChar` | `string` | `' '` | Indentation character. |
 
-<a name="transpileToCpp"></a>
+#### Returns
 
-## transpileToCpp(source, indentSize, indentChar) ⇒ <code>string</code>
+`string`
+
+Generated C code.
+
+#### Defined in
+
+[src/compilers/C.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/C.ts#L15)
+
+___
+
+### compileToCpp
+
+▸ **compileToCpp**(`source`, `isMemoryDynamic?`, `indentSize?`, `indentChar?`): `string`
+
 Converts UwU source code to a C++ program.
 
-**Kind**: global function  
-**Returns**: <code>string</code> - Generated C++ code.  
-**Throws**:
+**`Throws`**
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
-- [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
+if mismatching loop boundaries are detected.
 
+#### Parameters
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| source | <code>string</code> |  | UwU source code to convert. |
-| indentSize | <code>number</code> | <code>1</code> | Indentation size (default = 1). |
-| indentChar | <code>string</code> | <code>&quot;\t&quot;</code> | Indentation character (default is tab). |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `source` | `string` | `undefined` | UwU source to convert. |
+| `isMemoryDynamic` | `boolean` | `true` | Enable dynamic memory array. |
+| `indentSize` | `number` | `4` | Indentation size. |
+| `indentChar` | `string` | `' '` | Indentation character. |
 
-<a name="transpileToJsCLI"></a>
+#### Returns
 
-## transpileToJsCLI(source, useDynamicMemory, indentSize, indentChar) ⇒ <code>string</code>
-Converts an UwU program to JavaScript (CLI).
+`string`
 
-**Kind**: global function  
-**Returns**: <code>string</code> - Generated JavaScript code.  
-**Throws**:
+Generated C++ code.
 
-- <code>WrongInputTypeError</code> Input must be a string.
-- <code>BracketMismatchError</code> Loop starts must have matching loop ends and vice versa.
+#### Defined in
 
+[src/compilers/CPP.ts:16](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/CPP.ts#L16)
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| source | <code>string</code> |  | Brainfuck source to convert. |
-| useDynamicMemory | <code>boolean</code> | <code>true</code> | Enable dynamic memory array. |
-| indentSize | <code>number</code> | <code>2</code> | Indentation size. |
-| indentChar | <code>string</code> | <code>&quot; &quot;</code> | Indentation character. |
+___
 
-<a name="transpileToJsWeb"></a>
+### compileToJsBase
 
-## transpileToJsWeb(source, funcName, indentSize, indentChar) ⇒ <code>string</code>
-Converts UwU source code to JavaScript (Web).
+▸ **compileToJsBase**(`source`, `isMemoryDynamic`, `enableUserInput`, `indentSize`, `indentChar`): `Object`
 
-**Kind**: global function  
-**Returns**: <code>string</code> - Generated JavaScript function source.  
-**Throws**:
+Converts an UwU program to JavaScript.
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
-- [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
+**`Description`**
 
+This function is used by [compileToJsWeb](API.md#compiletojsweb), [compileToJsNode](API.md#compiletojsnode)
+and [compileToJsDeno](API.md#compiletojsdeno) to generate their output. You can use it to write functions
+that generate output for other JavaScript-based platforms.
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| source | <code>string</code> |  | UwU source code to convert. |
-| funcName | <code>string</code> | <code>&quot;main&quot;</code> | Output function name (default = 'run'). |
-| indentSize | <code>number</code> | <code>2</code> | Indentation size (default = 4). |
-| indentChar | <code>string</code> | <code>&quot; &quot;</code> | Indentation character (default is space). |
+**`Throws`**
 
-<a name="transpileToPython"></a>
+[LoopBoundaryMismatchError](classes/LoopBoundaryMismatchError.md) if mismatching loop boundaries are detected.
 
-## transpileToPython(source, useDynamicMemory) ⇒ <code>string</code>
-Converts UwU source code to a Python script.
+#### Parameters
 
-**Kind**: global function  
-**Returns**: <code>string</code> - Generated Python code.  
-**Throws**:
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | UwU source to convert. |
+| `isMemoryDynamic` | `boolean` | Enable dynamic memory array. |
+| `enableUserInput` | `boolean` | Enable user input handling. |
+| `indentSize` | `number` | Indentation size. |
+| `indentChar` | `string` | Indentation character. |
 
-- [<code>WrongInputError</code>](#WrongInputError) Input must be a string.
-- [<code>LoopBoundaryMismatchError</code>](#LoopBoundaryMismatchError) Loop starts must have matching loop ends and vice versa.
+#### Returns
 
+`Object`
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| source | <code>string</code> |  | UwU source code to convert. |
-| useDynamicMemory | <code>boolean</code> | <code>true</code> |  |
+| Name | Type |
+| :------ | :------ |
+| `declaration` | `string`[] |
+| `definition` | `string`[] |
 
-<a name="tokenizeUwuSource"></a>
+#### Defined in
 
-## tokenizeUwuSource(source) ⇒ <code>Array.&lt;string&gt;</code>
+[src/compilers/JavaScriptBase.ts:20](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptBase.ts#L20)
+
+___
+
+### compileToJsDeno
+
+▸ **compileToJsDeno**(`source`, `isMemoryDynamic?`, `mainFunctionName?`, `indentSize?`, `indentChar?`): `string`
+
+Converts an UwU program to JavaScript (Deno).
+
+**`Throws`**
+
+if mismatching loop boundaries are detected.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `source` | `string` | `undefined` | UwU source to convert. |
+| `isMemoryDynamic` | `boolean` | `true` | Enable dynamic memory array. |
+| `mainFunctionName` | `string` | `'main'` | Main function name. |
+| `indentSize` | `number` | `2` | Indentation size. |
+| `indentChar` | `string` | `' '` | Indentation character. |
+
+#### Returns
+
+`string`
+
+Generated JavaScript code.
+
+#### Defined in
+
+[src/compilers/JavaScriptDeno.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptDeno.ts#L15)
+
+___
+
+### compileToJsNode
+
+▸ **compileToJsNode**(`source`, `isMemoryDynamic?`, `mainFunctionName?`, `indentSize?`, `indentChar?`): `string`
+
+Converts an UwU program to JavaScript (Node.js).
+
+**`Throws`**
+
+if mismatching loop boundaries are detected.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `source` | `string` | `undefined` | UwU source to convert. |
+| `isMemoryDynamic` | `boolean` | `true` | Enable dynamic memory array. |
+| `mainFunctionName` | `string` | `'main'` | Main function name. |
+| `indentSize` | `number` | `2` | Indentation size. |
+| `indentChar` | `string` | `' '` | Indentation character. |
+
+#### Returns
+
+`string`
+
+Generated JavaScript code.
+
+#### Defined in
+
+[src/compilers/JavaScriptNode.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptNode.ts#L15)
+
+___
+
+### compileToJsWeb
+
+▸ **compileToJsWeb**(`source`, `isMemoryDynamic?`, `mainFunctionName?`, `indentSize?`, `indentChar?`): `string`
+
+Converts an UwU program to JavaScript (Web).
+
+**`Throws`**
+
+if mismatching loop boundaries are detected.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `source` | `string` | `undefined` | UwU source to convert. |
+| `isMemoryDynamic` | `boolean` | `true` | Enable dynamic memory array. |
+| `mainFunctionName` | `string` | `'main'` | Main function name. |
+| `indentSize` | `number` | `2` | Indentation size. |
+| `indentChar` | `string` | `' '` | Indentation character. |
+
+#### Returns
+
+`string`
+
+Generated JavaScript code.
+
+#### Defined in
+
+[src/compilers/JavaScriptWeb.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptWeb.ts#L15)
+
+___
+
+### compileToPython
+
+▸ **compileToPython**(`source`, `isMemoryDynamic?`): `string`
+
+Converts an UwU program to a Python.
+
+**`Throws`**
+
+if mismatching loop boundaries are detected.
+
+#### Parameters
+
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `source` | `string` | `undefined` | UwU source to convert. |
+| `isMemoryDynamic` | `boolean` | `true` | Enable dynamic memory array. |
+
+#### Returns
+
+`string`
+
+Generated Python code.
+
+#### Defined in
+
+[src/compilers/Python.ts:14](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/Python.ts#L14)
+
+___
+
+## Utility Functions
+
+### genIndent
+
+▸ **genIndent**(`depth`, `size`, `char`): `string`
+
+Generates an indentation string.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `depth` | `number` | Indentation depth. |
+| `size` | `number` | Indentation size. |
+| `char` | `string` | Indentation character. |
+
+#### Returns
+
+`string`
+
+Indentation string.
+
+#### Defined in
+
+[src/utils/genIndent.ts:9](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/utils/genIndent.ts#L9)
+
+___
+
+### tokenizeUwuSource
+
+▸ **tokenizeUwuSource**(`source`): `string`[]
+
 Converts UwU source code to an array of UwU commands.
 
-**Kind**: global function  
-**Returns**: <code>Array.&lt;string&gt;</code> - An array of UwU commands.  
+#### Parameters
 
-| Param | Type | Description |
-| --- | --- | --- |
-| source | <code>string</code> | UwU source code in string form. |
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `source` | `string` | UwU source code in string form. |
 
-<a name="isValidProgram"></a>
+#### Returns
 
-## isValidProgram(sourceArray) ⇒ <code>boolean</code>
-Validates an UwU program by looking for umatched loop starts/ends.
+`string`[]
 
-**Kind**: global function  
+An array of UwU commands.
 
-| Param | Type |
-| --- | --- |
-| sourceArray | <code>Array.&lt;string&gt;</code> | 
+#### Defined in
 
+[src/utils/tokenizeUwuSource.ts:9](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/utils/tokenizeUwuSource.ts#L9)
+
+___
+
+## Validation Functions
+
+### isValidProgram
+
+▸ **isValidProgram**(`sourceArray`): `boolean`
+
+Validates an UwU program by looking for unmatched loop starts/ends.
+
+#### Parameters
+
+| Name | Type | Description |
+| :------ | :------ | :------ |
+| `sourceArray` | `string`[] | Tokenized UwU code. |
+
+#### Returns
+
+`boolean`
+
+true if the program is valid or false otherwise.
+
+#### Defined in
+
+[src/utils/isValidProgram.ts:7](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/utils/isValidProgram.ts#L7)
