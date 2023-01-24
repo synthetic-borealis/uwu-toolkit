@@ -200,7 +200,7 @@ try {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hewwo Wowwd!</title>
-    <script src="https://unpkg.com/uwu-toolkit@2.0.0/dist/uwu-toolkit.js"></script>
+    <script src="https://unpkg.com/uwu-toolkit@2.0.1/dist/uwu-toolkit.js"></script>
   </head>
   <body>
     <p>
