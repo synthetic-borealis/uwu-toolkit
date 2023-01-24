@@ -25,7 +25,7 @@
     "lint": "eslint src/**/*.{ts,js} __tests__/**/*.{ts,js} test-utils/**/*.{ts,js}",
     "build:node": "tsc",
     "build:browser": "ts-node scripts/bundle.ts",
-    "build": "run-p build:*",
+    "build": "yarn build:node && yarn build:browser",
     "clean": "rimraf lib/ types/ dist/",
     "prepack": "yarn clean && yarn build",
     "postpack": "yarn clean",
