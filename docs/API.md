@@ -54,7 +54,7 @@ Generated Brainfuck code.
 
 #### Defined in
 
-[src/compilers/Brainfuck.ts:12](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/Brainfuck.ts#L12)
+[src/compilers/Brainfuck.ts:12](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/Brainfuck.ts#L12)
 
 ___
 
@@ -84,7 +84,7 @@ Generated C code.
 
 #### Defined in
 
-[src/compilers/C.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/C.ts#L15)
+[src/compilers/C.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/C.ts#L15)
 
 ___
 
@@ -115,7 +115,7 @@ Generated C++ code.
 
 #### Defined in
 
-[src/compilers/CPP.ts:16](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/CPP.ts#L16)
+[src/compilers/CPP.ts:16](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/CPP.ts#L16)
 
 ___
 
@@ -156,7 +156,7 @@ that generate output for other JavaScript-based platforms.
 
 #### Defined in
 
-[src/compilers/JavaScriptBase.ts:20](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptBase.ts#L20)
+[src/compilers/JavaScriptBase.ts:20](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/JavaScriptBase.ts#L20)
 
 ___
 
@@ -188,7 +188,7 @@ Generated JavaScript code.
 
 #### Defined in
 
-[src/compilers/JavaScriptDeno.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptDeno.ts#L15)
+[src/compilers/JavaScriptDeno.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/JavaScriptDeno.ts#L15)
 
 ___
 
@@ -220,7 +220,7 @@ Generated JavaScript code.
 
 #### Defined in
 
-[src/compilers/JavaScriptNode.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptNode.ts#L15)
+[src/compilers/JavaScriptNode.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/JavaScriptNode.ts#L15)
 
 ___
 
@@ -252,7 +252,7 @@ Generated JavaScript code.
 
 #### Defined in
 
-[src/compilers/JavaScriptWeb.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/JavaScriptWeb.ts#L15)
+[src/compilers/JavaScriptWeb.ts:15](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/JavaScriptWeb.ts#L15)
 
 ___
 
@@ -281,7 +281,7 @@ Generated Python code.
 
 #### Defined in
 
-[src/compilers/Python.ts:14](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/compilers/Python.ts#L14)
+[src/compilers/Python.ts:14](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/compilers/Python.ts#L14)
 
 ___
 
@@ -309,7 +309,7 @@ Indentation string.
 
 #### Defined in
 
-[src/utils/genIndent.ts:9](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/utils/genIndent.ts#L9)
+[src/utils/genIndent.ts:9](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/utils/genIndent.ts#L9)
 
 ___
 
@@ -333,7 +333,7 @@ An array of UwU commands.
 
 #### Defined in
 
-[src/utils/tokenizeUwuSource.ts:9](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/utils/tokenizeUwuSource.ts#L9)
+[src/utils/tokenizeUwuSource.ts:9](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/utils/tokenizeUwuSource.ts#L9)
 
 ___
 
@@ -359,4 +359,4 @@ true if the program is valid or false otherwise.
 
 #### Defined in
 
-[src/utils/isValidProgram.ts:7](https://github.com/synthetic-borealis/uwu-toolkit/blob/3c31924/src/utils/isValidProgram.ts#L7)
+[src/utils/isValidProgram.ts:7](https://github.com/synthetic-borealis/uwu-toolkit/blob/ec6e5bf/src/utils/isValidProgram.ts#L7)
